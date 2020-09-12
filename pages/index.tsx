@@ -1,5 +1,7 @@
 import React, { useState, useRef }  from "react"
 import domToImage from "dom-to-image"
+import { storage } from "../src/plugins/Firebase"
+import { generateRandomId } from "../src/utils"
 
 const Home = () => {
   const previewRef = useRef<HTMLDivElement>(null)
@@ -10,7 +12,18 @@ const Home = () => {
     const img = new Image()
     img.src = dataUrl
 
-    document.body.appendChild(img)
+    img.onload = () => {
+      const canvas = document.createElement("canvas")
+      canvas.width = previewRef.current.offsetWidth * 2
+      canvas.height = previewRef.current.offsetHeight * 2
+      const ctx = canvas.getContext("2d")
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+      canvas.toBlob(blob => {
+        storage.ref(`ogp/${generateRandomId()}`).put(blob)
+      })
+    }
+
+
   }
 
   return (
