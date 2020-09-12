@@ -1,7 +1,7 @@
 import React, { useState, useRef }  from "react"
 import domToImage from "dom-to-image"
-import { storage } from "../src/plugins/Firebase"
-import { generateRandomId } from "../src/utils"
+import { storage } from "../plugins/Firebase"
+import { generateRandomId } from "../utils"
 
 const Home = () => {
   const previewRef = useRef<HTMLDivElement>(null)
