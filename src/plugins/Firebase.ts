@@ -12,6 +12,8 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_MEASUREMENTID,
 }
 
-const firebaseApp = firebase.initializeApp(firebaseConfig)
+const firebaseApp = firebase.apps.length
+  ? firebase.app()
+  : firebase.initializeApp(firebaseConfig)
 
 export const storage = firebaseApp.storage()
