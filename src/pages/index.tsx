@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import domToImage from "dom-to-image"
 import { storage } from "../plugins/Firebase"
 import { generateRandomId } from "../utils"
+import { NiwatoriPreview } from "../components/NiwatoriPreview"
 
 const Home = () => {
   const router = useRouter()
@@ -34,11 +35,7 @@ const Home = () => {
   return (
     <div>
       <h1>庭には2羽ニワトリがいるジェネレーター</h1>
-      <div style={{ width: "200px", height: "200px", backgroundColor: "white" }} ref={previewRef}>
-        <p>this is preview</p>
-        <p><b>{ text }</b></p>
-        <p style={{ color: "red" }}>niwatori</p>
-      </div>
+      <NiwatoriPreview ref={previewRef} />
       <hr />
       <input value={text} onChange={e => setText(e.target.value)} />
       <button onClick={generate}>start</button>
