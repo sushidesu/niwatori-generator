@@ -40,7 +40,7 @@ const NonMemoNiwatoriEditor: React.FC<Props> = ({ register, onSubmit, onEmojiCli
         label="どうした"
         ref={register}
       />
-      <button>OK</button>
+      <Button>画像を生成</Button>
     </Form>
   </Wrapper>
 )
@@ -48,7 +48,7 @@ const NonMemoNiwatoriEditor: React.FC<Props> = ({ register, onSubmit, onEmojiCli
 const Wrapper = styled.div`
   display: flex;
   font-size: .9em;
-  margin-right: .2em;
+  margin-top: .8em;
 `
 
 const Form = styled.form`
@@ -61,6 +61,21 @@ const Form = styled.form`
 const Row = styled.div`
   display: flex;
   align-items: flex-end;
+`
+
+const Button = styled.button`
+  margin: .6em auto;
+  width: fit-content;
+  outline: none;
+  box-shadow: none;
+  color: #24292e;
+  background-color: #ffcf88;
+  border-color: rgb(156 55 55 / 15%);
+  padding: 5px 18px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
 `
 
 export const NiwatoriEditor = React.memo(NonMemoNiwatoriEditor)

@@ -2,6 +2,7 @@ import React from "react"
 import { GetServerSideProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
+import styled from "@emotion/styled"
 import { Layout } from "../../components/Layout"
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -51,10 +52,28 @@ const Result = ({ pid }: { pid: string}) => {
           content={imageUrl}
         />
       </Head>
-      <img src={imageUrl} />
-      <Link href="/">Home</Link>
+      <img src={imageUrl} width="100%" />
+      <Button>
+        <Link href="/">ニワトリ画像を編集する</Link>
+      </Button>
     </Layout>
   )
 }
+
+const Button = styled.div`
+  margin: 3em 0 180px 0;
+  & > a {
+    margin: auto;
+    display: block;
+    width: fit-content;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 4px 4px 10px rgba(10, 10, 10, 0.1);
+  }
+`
 
 export default Result

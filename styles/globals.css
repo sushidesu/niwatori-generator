@@ -7,7 +7,7 @@
 html,body,#__next {
   width: 100vw;
   height: 100vh;
-  /* overflow: hidden; */
+  overflow: auto;
   font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   font-size: 16px;
 }

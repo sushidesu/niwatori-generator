@@ -2,11 +2,13 @@ import React, { useCallback, useRef, useEffect }  from "react"
 import { useRouter } from "next/router"
 import domToImage from "dom-to-image"
 import { useForm, SubmitHandler } from "react-hook-form"
+import styled from "@emotion/styled"
 import { storage } from "../plugins/Firebase"
 import { generateRandomId } from "../utils"
 import { Layout } from "../components/Layout"
 import { NiwatoriPreview } from "../components/NiwatoriPreview"
 import { NiwatoriEditor } from "../components/NiwatoriEditor"
+import { Divider } from "../components/Divider"
 
 const Home = () => {
   const router = useRouter()
@@ -57,8 +59,9 @@ const Home = () => {
 
   return (
     <Layout>
+      <Title>プレビュー</Title>
       <NiwatoriPreview niwatori={watch()} ref={previewRef} />
-      <hr />
+      <Divider />
       <NiwatoriEditor
         register={register}
         onSubmit={handleSubmit(submit)}
@@ -68,5 +71,10 @@ const Home = () => {
     </Layout>
   )
 }
+
+const Title = styled.h2`
+  font-size: 1em;
+  margin-top: 1.2em;
+`
 
 export default Home
