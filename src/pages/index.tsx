@@ -16,7 +16,7 @@ const Home = () => {
       place: "庭",
       count: "2",
       unit: "羽",
-      emoji: "🐔",
+      emoji: "🐓",
       niwatori: "ニワトリ",
       whatHappened: "いる",
     }

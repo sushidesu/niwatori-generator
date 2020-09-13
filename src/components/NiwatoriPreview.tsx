@@ -14,7 +14,7 @@ const WithoutRefNiwatoriPreview: ForwardRefRenderFunction<HTMLDivElement, Props>
         {Array.from({ length: parseInt(niwatori.count) || 0 }).map((_, index) => (
           <Niwatori key={index}>
             <Twemoji>{ niwatori.emoji }</Twemoji>
-            { niwatori.niwatori }
+            <span>{ niwatori.niwatori }</span>
           </Niwatori>
         ))}
       </NiwatoriWrapper>
@@ -55,13 +55,23 @@ const NiwatoriWrapper = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 `
 
 const Niwatori = styled.div`
-  width: 90px;
-  height: 40px;
-  border: 1px solid #000;
-  margin: .1em;
+  margin: .3em;
+  position: relative;
+  & img {
+    width: 72px;
+  }
+  & > span {
+    position: absolute;
+    top: -0.8em;
+    right: 0;
+    font-size: .8em;
+    text-align: right;
+    transform: translateY(-60%);
+  }
 `
 
 const WhatHappened = styled.p`
