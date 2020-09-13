@@ -1,15 +1,17 @@
 import React, {} from "react"
 import styled from "@emotion/styled"
+import Loader from "react-spinners/ClipLoader"
 import { EmojiPicker } from "./EmojiPicker"
 
 type Props = {
+  loading: boolean
   register: () => void
   onSubmit?: React.DOMAttributes<HTMLFormElement>["onSubmit"]
   onEmojiClick: (emoji: string) => void
   emoji: string
 }
 
-const NonMemoNiwatoriEditor: React.FC<Props> = ({ register, onSubmit, onEmojiClick, emoji }) => (
+const NonMemoNiwatoriEditor: React.FC<Props> = ({ loading, register, onSubmit, onEmojiClick, emoji }) => (
   <Wrapper>
     <Form onSubmit={onSubmit}>
       <Input
@@ -40,7 +42,7 @@ const NonMemoNiwatoriEditor: React.FC<Props> = ({ register, onSubmit, onEmojiCli
         label="どうした"
         ref={register}
       />
-      <Button>画像を生成</Button>
+      <Button>{loading ? <Loader size={18} color="#fff" /> : "画像を生成"}</Button>
     </Form>
   </Wrapper>
 )
@@ -65,7 +67,7 @@ const Row = styled.div`
 
 const Button = styled.button`
   margin: .6em auto;
-  width: fit-content;
+  width: 140px;
   outline: none;
   box-shadow: none;
   color: #24292e;

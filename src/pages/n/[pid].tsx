@@ -11,7 +11,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 const Result = ({ pid }: { pid: string}) => {
-  const pageUrl = `https://niwatori-generator.vercel.app/n/${pid}`
+  const pageUrl = `https://niwatori-generator.dayo.app/n/${pid}`
   const imageUrl = `https://storage.googleapis.com/niwatori-generator.appspot.com/ogp/${pid}`
   const TITLE = "庭には2羽ニワトリがいるジェネレーター"
   const DESCRIPTION = "ほんわかニワトリ画像を作成します"

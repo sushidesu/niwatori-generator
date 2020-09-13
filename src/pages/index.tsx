@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useEffect }  from "react"
+import React, { useState, useCallback, useRef, useEffect }  from "react"
 import { useRouter } from "next/router"
 import domToImage from "dom-to-image"
 import { useForm, SubmitHandler } from "react-hook-form"
@@ -13,7 +13,7 @@ import { Divider } from "../components/Divider"
 const Home = () => {
   const router = useRouter()
   const previewRef = useRef<HTMLDivElement>(null)
-
+  const [loading, setLoading] = useState(false)
   const { watch, register, setValue,  handleSubmit } = useForm<Niwatori>({
     defaultValues: {
       place: "庭",
@@ -34,10 +34,13 @@ const Home = () => {
   const submit: SubmitHandler<Niwatori> = (data, event) => {
     event.preventDefault()
     // console.log(data)
-    generate()
+    if (!loading) {
+      generate()
+    }
   }
 
   const generate = async () => {
+    setLoading(true)
     const id = generateRandomId()
 
     const dataUrl = await domToImage.toPng(previewRef.current)
@@ -52,6 +55,7 @@ const Home = () => {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
       canvas.toBlob(async (blob) => {
         await storage.ref(`ogp/${id}`).put(blob)
+        setLoading(false)
         router.push(`/n/${id}`)
       })
     }
@@ -63,6 +67,7 @@ const Home = () => {
       <NiwatoriPreview niwatori={watch()} ref={previewRef} />
       <Divider />
       <NiwatoriEditor
+        loading={loading}
         register={register}
         onSubmit={handleSubmit(submit)}
         onEmojiClick={setEmoji}
