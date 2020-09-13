@@ -56,8 +56,8 @@ const Home = () => {
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
       canvas.toBlob(async (blob) => {
         await storage.ref(`ogp/${id}`).put(blob)
-        setLoading(false)
         router.push(`/n/${id}`)
+        setLoading(false)
       })
     }
   }
