@@ -17,7 +17,7 @@ export const EmojiPicker: React.FC<Props> = ({ emoji, onEmojiClick }) => {
       {open
         ? <Overlay id="overlay" onClick={(event) => {
             const target = event.target as { id?: string }
-            if (target?.id) setOpen(false)
+            if (target?.id === "overlay") setOpen(false)
           }}>
             <Picker
               sheetSize={32}
