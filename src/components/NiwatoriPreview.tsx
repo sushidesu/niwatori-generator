@@ -66,10 +66,11 @@ const NiwatoriWrapper = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  padding-top: 8px;
 `
 
 const Niwatori = styled.div`
-  margin: .3em .3em 0 0;
+  margin: 0 .3em 0 0;
   position: relative;
   display: flex;
   flex-direction: column;
