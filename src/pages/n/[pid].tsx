@@ -17,7 +17,15 @@ const Result = ({ pid }: { pid: string}) => {
   return (
     <div>
       <Head>
-      <title>{TITLE}</title>
+        <title>{TITLE}</title>
+        <meta
+          name="description"
+          content={DESCRIPTION}
+        />
+        <meta
+          property="og:title"
+          content={TITLE}
+        />
         <meta
           property="og:image"
           content={imageUrl}
@@ -33,10 +41,10 @@ const Result = ({ pid }: { pid: string}) => {
         />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
+        {/* <meta
           name="twitter:description"
           content={DESCRIPTION}
-        />
+        /> */}
         <meta
           name="twitter:image"
           content={imageUrl}
