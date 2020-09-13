@@ -1,4 +1,4 @@
-import React, {} from "react"
+import React from "react"
 import styled from "@emotion/styled"
 import Loader from "react-spinners/ClipLoader"
 import { EmojiPicker } from "./EmojiPicker"

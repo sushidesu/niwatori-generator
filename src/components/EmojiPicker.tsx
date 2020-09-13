@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import styled from "@emotion/styled"
 import Twemoji from "react-twemoji"
 import { Picker, BaseEmoji } from "emoji-mart"
-import { Overlay } from "react-portal-overlay"
 
 type Props = {
   emoji: string
@@ -16,17 +15,10 @@ export const EmojiPicker: React.FC<Props> = ({ emoji, onEmojiClick }) => {
     <>
       <EmojiButton onClick={() => setOpen(prev => !prev)}>{ emoji }</EmojiButton>
       {open
-        ? <Overlay
-            open={open}
-            closeOnClick
-            onClose={() => setOpen(prev => !prev)}
-            style={{
-              backgroundColor: "rgba(100, 100, 100, 0.4)",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+        ? <Overlay id="overlay" onClick={(event) => {
+            const target = event.target as { id?: string }
+            if (target?.id) setOpen(false)
+          }}>
             <Picker
               sheetSize={32}
               set="twitter"
@@ -58,4 +50,21 @@ const EmojiButton = styled(Twemoji)`
   }
   border: 1px solid #CDD9ED;
   border-radius: 6px;
+`
+
+const Overlay = styled.div`
+  background-color: rgba(100, 100, 100, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .emoji-mart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+  }
 `
