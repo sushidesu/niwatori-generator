@@ -1,14 +1,31 @@
 import React, { useState, useRef }  from "react"
 import { useRouter } from "next/router"
 import domToImage from "dom-to-image"
+import { useForm, SubmitHandler } from "react-hook-form"
 import { storage } from "../plugins/Firebase"
 import { generateRandomId } from "../utils"
 import { NiwatoriPreview } from "../components/NiwatoriPreview"
+import { NiwatoriEditor } from "../components/NiwatoriEditor"
 
 const Home = () => {
   const router = useRouter()
   const previewRef = useRef<HTMLDivElement>(null)
-  const [text, setText] = useState("にわとり")
+
+  const { watch, register, handleSubmit } = useForm<Niwatori>({
+    defaultValues: {
+      place: "庭",
+      count: "2",
+      unit: "羽",
+      niwatori: "ニワトリ",
+      whatHappened: "いる",
+    }
+  })
+
+  const submit: SubmitHandler<Niwatori> = (data, event) => {
+    event.preventDefault()
+    console.log(data)
+    generate()
+  }
 
   const generate = async () => {
     const id = generateRandomId()
@@ -28,17 +45,17 @@ const Home = () => {
         router.push(`/n/${id}`)
       })
     }
-
-
   }
 
   return (
     <div>
       <h1>庭には2羽ニワトリがいるジェネレーター</h1>
-      <NiwatoriPreview ref={previewRef} />
+      <NiwatoriPreview niwatori={watch()} ref={previewRef} />
       <hr />
-      <input value={text} onChange={e => setText(e.target.value)} />
-      <button onClick={generate}>start</button>
+      <NiwatoriEditor
+        register={register}
+        onSubmit={handleSubmit(submit)}
+      />
     </div>
   )
 }

@@ -1,22 +1,21 @@
 import React, { forwardRef, ForwardRefRenderFunction } from "react"
 import styled from "@emotion/styled"
 
-const place = "庭"
-const niwatori = "ニワトリ"
-const count = 2
-const verv = "いる"
+type Props = {
+  niwatori: Niwatori
+}
 
-const WithoutRefNiwatoriPreview: ForwardRefRenderFunction<HTMLDivElement> = ({ children }, ref) => (
+const WithoutRefNiwatoriPreview: ForwardRefRenderFunction<HTMLDivElement, Props> = ({ niwatori }, ref) => (
   <Wrapper ref={ref}>
     <Place>
-      <span>{ place }</span>
+      <span>{ niwatori.place }</span>
       <NiwatoriWrapper>
-        {Array.from({ length: count }).map((_, index) => (
-          <Niwatori key={index}>{ niwatori }</Niwatori>
+        {Array.from({ length: parseInt(niwatori.count) || 0 }).map((_, index) => (
+          <Niwatori key={index}>{ niwatori.niwatori }</Niwatori>
         ))}
       </NiwatoriWrapper>
     </Place>
-        <WhatHappened>{ verv }</WhatHappened>
+        <WhatHappened>{ niwatori.whatHappened }</WhatHappened>
   </Wrapper>
 )
 
