@@ -54,6 +54,11 @@ const Result = ({ pid }: { pid: string}) => {
       </Head>
       <img src={imageUrl} width="100%" />
       <Button>
+        <a href={`https://twitter.com/intent/tweet?hashtags=庭には2羽ニワトリがいるジェネレーター&url=${pageUrl}`}>
+          ツイートする
+        </a>
+      </Button>
+      <Button>
         <Link href="/">ニワトリ画像を編集する</Link>
       </Button>
     </Layout>
@@ -61,7 +66,7 @@ const Result = ({ pid }: { pid: string}) => {
 }
 
 const Button = styled.div`
-  margin: 3em 0 180px 0;
+  margin: 1em 0 2em 0;
   & > a {
     margin: auto;
     display: block;
