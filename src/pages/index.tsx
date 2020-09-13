@@ -1,13 +1,17 @@
 import React, { useState, useRef }  from "react"
+import { useRouter } from "next/router"
 import domToImage from "dom-to-image"
 import { storage } from "../plugins/Firebase"
 import { generateRandomId } from "../utils"
 
 const Home = () => {
+  const router = useRouter()
   const previewRef = useRef<HTMLDivElement>(null)
   const [text, setText] = useState("にわとり")
 
   const generate = async () => {
+    const id = generateRandomId()
+
     const dataUrl = await domToImage.toPng(previewRef.current)
     const img = new Image()
     img.src = dataUrl
@@ -18,8 +22,9 @@ const Home = () => {
       canvas.height = previewRef.current.offsetHeight * 2
       const ctx = canvas.getContext("2d")
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
-      canvas.toBlob(blob => {
-        storage.ref(`ogp/${generateRandomId()}`).put(blob)
+      canvas.toBlob(async (blob) => {
+        await storage.ref(`ogp/${id}`).put(blob)
+        router.push(`/n/${id}`)
       })
     }
 
