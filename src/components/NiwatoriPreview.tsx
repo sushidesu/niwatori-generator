@@ -6,24 +6,28 @@ type Props = {
   niwatori: Niwatori
 }
 
-const WithoutRefNiwatoriPreview: ForwardRefRenderFunction<HTMLDivElement, Props> = ({ niwatori }, ref) => (
-  <Container>
-    <Wrapper ref={ref}>
-      <Place>
-        <span>{ niwatori.place }</span>
-        <NiwatoriWrapper>
-          {Array.from({ length: parseInt(niwatori.count) || 0 }).map((_, index) => (
-            <Niwatori key={index}>
-              <span>{ niwatori.niwatori }</span>
-              <Twemoji>{ niwatori.emoji }</Twemoji>
-            </Niwatori>
-          ))}
-        </NiwatoriWrapper>
-      </Place>
-      <WhatHappened>{ niwatori.whatHappened }</WhatHappened>
-    </Wrapper>
-  </Container>
-)
+const WithoutRefNiwatoriPreview: ForwardRefRenderFunction<HTMLDivElement, Props> = ({ niwatori }, ref) => {
+  const count = parseInt(niwatori.count) || 0
+
+  return (
+    <Container>
+      <Wrapper ref={ref}>
+        <Place>
+          <span>{ niwatori.place }</span>
+          <NiwatoriWrapper>
+            {Array.from({ length: count > 30 ? 30 : count }).map((_, index) => (
+              <Niwatori key={index}>
+                <span>{ niwatori.niwatori }</span>
+                <Twemoji>{ niwatori.emoji }</Twemoji>
+              </Niwatori>
+            ))}
+          </NiwatoriWrapper>
+        </Place>
+        <WhatHappened>{ niwatori.whatHappened }</WhatHappened>
+      </Wrapper>
+    </Container>
+  )
+}
 
 const Container = styled.div`
   margin: auto;
