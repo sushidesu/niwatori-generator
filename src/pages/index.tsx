@@ -57,7 +57,6 @@ const Home = () => {
       canvas.toBlob(async (blob) => {
         await storage.ref(`ogp/${id}`).put(blob)
         router.push(`/n/${id}`)
-        setLoading(false)
       })
     }
   }
