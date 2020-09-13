@@ -15,7 +15,7 @@ const WithoutRefNiwatoriPreview: ForwardRefRenderFunction<HTMLDivElement, Props>
         ))}
       </NiwatoriWrapper>
     </Place>
-        <WhatHappened>{ niwatori.whatHappened }</WhatHappened>
+    <WhatHappened>{ niwatori.whatHappened }</WhatHappened>
   </Wrapper>
 )
 
@@ -40,6 +40,7 @@ const Place = styled.div`
     left: 1em;
     padding: 4px 8px;
     background-color: white;
+    font-size: 1.4em;
   }
 `
 
@@ -60,7 +61,9 @@ const Niwatori = styled.div`
 `
 
 const WhatHappened = styled.p`
-  color: blue;
+  text-align: right;
+  font-weight: bold;
+  font-size: 2em;
 `
 
 export const NiwatoriPreview = forwardRef(WithoutRefNiwatoriPreview)
