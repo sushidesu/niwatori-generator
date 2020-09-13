@@ -14,8 +14,8 @@ const WithoutRefNiwatoriPreview: ForwardRefRenderFunction<HTMLDivElement, Props>
         <NiwatoriWrapper>
           {Array.from({ length: parseInt(niwatori.count) || 0 }).map((_, index) => (
             <Niwatori key={index}>
-              <Twemoji>{ niwatori.emoji }</Twemoji>
               <span>{ niwatori.niwatori }</span>
+              <Twemoji>{ niwatori.emoji }</Twemoji>
             </Niwatori>
           ))}
         </NiwatoriWrapper>
@@ -33,7 +33,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   width: 300px;
   height: 157px;
-  padding: .8em;
+  padding: .3em .8em;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@ const Wrapper = styled.div`
 const Place = styled.div`
   position: relative;
   width: 90%;
-  height: 90%;
+  height: 100%;
   border-radius: 6px;
   border: 2px solid #555;
   & > span {
@@ -69,18 +69,16 @@ const NiwatoriWrapper = styled.div`
 `
 
 const Niwatori = styled.div`
-  margin: .3em;
+  margin: .3em .3em 0 0;
   position: relative;
+  display: flex;
+  flex-direction: column;
   & img {
     width: 32px;
   }
   & > span {
-    position: absolute;
-    top: -0.8em;
-    right: 0;
     font-size: .5em;
     text-align: right;
-    transform: translateY(-60%);
   }
 `
 
