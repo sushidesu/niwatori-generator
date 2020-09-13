@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect }  from "react"
+import Head from "next/head"
 import { useRouter } from "next/router"
 import domToImage from "dom-to-image"
 import { useForm, SubmitHandler } from "react-hook-form"
@@ -61,8 +62,42 @@ const Home = () => {
     }
   }
 
+  const pageUrl = `https://niwatori-generator.dayo.app/`
+  const TITLE = "庭には2羽ニワトリがいるジェネレーター"
+  const DESCRIPTION = "ほんわかニワトリ画像を作成します"
+  const imageUrl = "/static/niwatori.png"
+
   return (
     <Layout>
+      <Head>
+        <title>{TITLE}</title>
+        <meta
+          name="description"
+          content={DESCRIPTION}
+        />
+        <meta
+          property="og:title"
+          content={TITLE}
+        />
+        <meta
+          property="og:image"
+          content={imageUrl}
+        />
+        <meta
+          property="og:url"
+          content={pageUrl}
+        />
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:description"
+          content={DESCRIPTION}
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:image"
+          content={imageUrl}
+        />
+      </Head>
       <Title>プレビュー</Title>
       <NiwatoriPreview niwatori={watch()} ref={previewRef} />
       <Divider />
