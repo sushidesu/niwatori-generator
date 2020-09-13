@@ -7,27 +7,33 @@ type Props = {
 }
 
 const WithoutRefNiwatoriPreview: ForwardRefRenderFunction<HTMLDivElement, Props> = ({ niwatori }, ref) => (
-  <Wrapper ref={ref}>
-    <Place>
-      <span>{ niwatori.place }</span>
-      <NiwatoriWrapper>
-        {Array.from({ length: parseInt(niwatori.count) || 0 }).map((_, index) => (
-          <Niwatori key={index}>
-            <Twemoji>{ niwatori.emoji }</Twemoji>
-            <span>{ niwatori.niwatori }</span>
-          </Niwatori>
-        ))}
-      </NiwatoriWrapper>
-    </Place>
-    <WhatHappened>{ niwatori.whatHappened }</WhatHappened>
-  </Wrapper>
+  <Container>
+    <Wrapper ref={ref}>
+      <Place>
+        <span>{ niwatori.place }</span>
+        <NiwatoriWrapper>
+          {Array.from({ length: parseInt(niwatori.count) || 0 }).map((_, index) => (
+            <Niwatori key={index}>
+              <Twemoji>{ niwatori.emoji }</Twemoji>
+              <span>{ niwatori.niwatori }</span>
+            </Niwatori>
+          ))}
+        </NiwatoriWrapper>
+      </Place>
+      <WhatHappened>{ niwatori.whatHappened }</WhatHappened>
+    </Wrapper>
+  </Container>
 )
+
+const Container = styled.div`
+  margin: auto;
+  width: fit-content;
+`
 
 const Wrapper = styled.div`
   width: 300px;
   height: 157px;
   padding: .8em;
-  margin: auto;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -66,7 +72,7 @@ const Niwatori = styled.div`
   margin: .3em;
   position: relative;
   & img {
-    width: 36px;
+    width: 32px;
   }
   & > span {
     position: absolute;
