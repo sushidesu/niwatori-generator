@@ -24,17 +24,20 @@ const WithoutRefNiwatoriPreview: ForwardRefRenderFunction<HTMLDivElement, Props>
 )
 
 const Wrapper = styled.div`
-  border: 1px solid #000;
   width: 600px;
   height: 315px;
   padding: 1.6em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 
 const Place = styled.div`
   position: relative;
   width: 90%;
   height: 90%;
-  margin: auto;
+  /* margin: auto; */
   border-radius: 6px;
   border: 2px solid #555;
   & > span {
@@ -75,6 +78,7 @@ const Niwatori = styled.div`
 `
 
 const WhatHappened = styled.p`
+  width: 96%;
   text-align: right;
   font-weight: bold;
   font-size: 2em;

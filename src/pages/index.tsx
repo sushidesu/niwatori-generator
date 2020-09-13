@@ -30,8 +30,8 @@ const Home = () => {
 
   const submit: SubmitHandler<Niwatori> = (data, event) => {
     event.preventDefault()
-    console.log(data)
-    // generate()
+    // console.log(data)
+    generate()
   }
 
   const generate = async () => {
