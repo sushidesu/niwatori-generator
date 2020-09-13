@@ -96,7 +96,6 @@ const WithoutRefInput: React.ForwardRefRenderFunction<HTMLInputElement, InputPro
       name={name}
       ref={ref}
       type={type}
-      maxLength={14}
     />
   </Control>
 )
