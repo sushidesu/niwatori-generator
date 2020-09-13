@@ -17,6 +17,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-hook-form": "^6.8.1",
+    "react-portal-overlay": "^1.0.1",
     "react-twemoji": "^0.3.0",
     "twemoji": "^13.0.1"
   },

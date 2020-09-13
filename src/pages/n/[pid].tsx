@@ -2,6 +2,7 @@ import React from "react"
 import { GetServerSideProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
+import { Layout } from "../../components/Layout"
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { pid } = context.query;
@@ -15,7 +16,7 @@ const Result = ({ pid }: { pid: string}) => {
   const DESCRIPTION = "ほんわかニワトリ画像を作成します"
 
   return (
-    <div>
+    <Layout>
       <Head>
         <title>{TITLE}</title>
         <meta
@@ -52,7 +53,7 @@ const Result = ({ pid }: { pid: string}) => {
       </Head>
       <img src={imageUrl} />
       <Link href="/">Home</Link>
-    </div>
+    </Layout>
   )
 }
 

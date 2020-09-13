@@ -4,6 +4,7 @@ import domToImage from "dom-to-image"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { storage } from "../plugins/Firebase"
 import { generateRandomId } from "../utils"
+import { Layout } from "../components/Layout"
 import { NiwatoriPreview } from "../components/NiwatoriPreview"
 import { NiwatoriEditor } from "../components/NiwatoriEditor"
 
@@ -55,16 +56,16 @@ const Home = () => {
   }
 
   return (
-    <div>
-      <h1>庭には2羽ニワトリがいるジェネレーター</h1>
+    <Layout>
       <NiwatoriPreview niwatori={watch()} ref={previewRef} />
       <hr />
       <NiwatoriEditor
         register={register}
         onSubmit={handleSubmit(submit)}
         onEmojiClick={setEmoji}
+        emoji={watch("emoji")}
       />
-    </div>
+    </Layout>
   )
 }
 

@@ -1,14 +1,15 @@
-import React from "react"
+import React, {} from "react"
 import styled from "@emotion/styled"
-import { BaseEmoji, Picker } from "emoji-mart"
+import { EmojiPicker } from "./EmojiPicker"
 
 type Props = {
   register: () => void
   onSubmit?: React.DOMAttributes<HTMLFormElement>["onSubmit"]
   onEmojiClick: (emoji: string) => void
+  emoji: string
 }
 
-const NonMemoNiwatoriEditor: React.FC<Props> = ({ register, onSubmit, onEmojiClick }) => (
+const NonMemoNiwatoriEditor: React.FC<Props> = ({ register, onSubmit, onEmojiClick, emoji }) => (
   <Wrapper>
     <Form onSubmit={onSubmit}>
       <Input
@@ -22,15 +23,18 @@ const NonMemoNiwatoriEditor: React.FC<Props> = ({ register, onSubmit, onEmojiCli
         type="number"
         ref={register}
       />
-      <Input
+      {/* <Input
         name="unit"
         ref={register}
-      />
-      <Input
-        name="niwatori"
-        label="何が"
-        ref={register}
-      />
+      /> */}
+      <Row>
+        <Input
+          name="niwatori"
+          label="何が"
+          ref={register}
+        />
+        <EmojiPicker emoji={emoji} onEmojiClick={onEmojiClick} />
+      </Row>
       <Input
         name="whatHappened"
         label="どうした"
@@ -38,18 +42,25 @@ const NonMemoNiwatoriEditor: React.FC<Props> = ({ register, onSubmit, onEmojiCli
       />
       <button>OK</button>
     </Form>
-    <Picker set="twitter" onSelect={emoji => onEmojiClick((emoji as BaseEmoji)?.native)} />
   </Wrapper>
 )
 
 const Wrapper = styled.div`
   display: flex;
+  font-size: .9em;
+  margin-right: .2em;
 `
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  max-width: 200px;
+  max-width: 240px;
+  margin: auto;
+`
+
+const Row = styled.div`
+  display: flex;
+  align-items: flex-end;
 `
 
 export const NiwatoriEditor = React.memo(NonMemoNiwatoriEditor)
@@ -61,15 +72,42 @@ type InputProps = {
 }
 
 const WithoutRefInput: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({ name, label, type }, ref) => (
-  <>
-    {label && <label htmlFor={name}>{label}</label>}
-    <input
+  <Control>
+    {label && <StyledLabel htmlFor={name}>{label}</StyledLabel>}
+    <StyledInput
       id={name}
       name={name}
       ref={ref}
       type={type}
     />
-  </>
+  </Control>
 )
+
+const Control = styled.div`
+  margin-bottom: .8em;
+`
+
+const StyledLabel = styled.label`
+  color: #23262b;
+`
+
+const StyledInput = styled.input`
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  line-height: 25px;
+  font-size: 1em;
+  border-radius: 6px;
+  -webkit-appearance: none;
+  color: #333;
+  border: 1px solid #CDD9ED;
+  background: #fff;
+  transition: border .3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #275EFE;
+  }
+`
 
 const Input = React.forwardRef(WithoutRefInput)

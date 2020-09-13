@@ -24,9 +24,9 @@ const WithoutRefNiwatoriPreview: ForwardRefRenderFunction<HTMLDivElement, Props>
 )
 
 const Wrapper = styled.div`
-  width: 600px;
-  height: 315px;
-  padding: 1.6em;
+  width: 300px;
+  height: 157px;
+  padding: .8em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,7 +37,6 @@ const Place = styled.div`
   position: relative;
   width: 90%;
   height: 90%;
-  /* margin: auto; */
   border-radius: 6px;
   border: 2px solid #555;
   & > span {
@@ -47,7 +46,7 @@ const Place = styled.div`
     left: 1em;
     padding: 4px 8px;
     background-color: white;
-    font-size: 1.4em;
+    font-size: .7em;
   }
 `
 
@@ -65,13 +64,13 @@ const Niwatori = styled.div`
   margin: .3em;
   position: relative;
   & img {
-    width: 72px;
+    width: 36px;
   }
   & > span {
     position: absolute;
     top: -0.8em;
     right: 0;
-    font-size: .8em;
+    font-size: .5em;
     text-align: right;
     transform: translateY(-60%);
   }
@@ -81,7 +80,7 @@ const WhatHappened = styled.p`
   width: 96%;
   text-align: right;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1em;
 `
 
 export const NiwatoriPreview = forwardRef(WithoutRefNiwatoriPreview)
