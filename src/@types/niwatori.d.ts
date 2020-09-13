@@ -4,5 +4,6 @@ interface Niwatori {
   count: string
   unit: string
   niwatori: string
+  emoji: string
   whatHappened: string
 }

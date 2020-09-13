@@ -1,5 +1,6 @@
 import React, { forwardRef, ForwardRefRenderFunction } from "react"
 import styled from "@emotion/styled"
+import Twemoji from "react-twemoji"
 
 type Props = {
   niwatori: Niwatori
@@ -11,7 +12,10 @@ const WithoutRefNiwatoriPreview: ForwardRefRenderFunction<HTMLDivElement, Props>
       <span>{ niwatori.place }</span>
       <NiwatoriWrapper>
         {Array.from({ length: parseInt(niwatori.count) || 0 }).map((_, index) => (
-          <Niwatori key={index}>{ niwatori.niwatori }</Niwatori>
+          <Niwatori key={index}>
+            <Twemoji>{ niwatori.emoji }</Twemoji>
+            { niwatori.niwatori }
+          </Niwatori>
         ))}
       </NiwatoriWrapper>
     </Place>

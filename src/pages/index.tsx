@@ -1,4 +1,4 @@
-import React, { useState, useRef }  from "react"
+import React, { useCallback, useRef, useEffect }  from "react"
 import { useRouter } from "next/router"
 import domToImage from "dom-to-image"
 import { useForm, SubmitHandler } from "react-hook-form"
@@ -11,20 +11,27 @@ const Home = () => {
   const router = useRouter()
   const previewRef = useRef<HTMLDivElement>(null)
 
-  const { watch, register, handleSubmit } = useForm<Niwatori>({
+  const { watch, register, setValue,  handleSubmit } = useForm<Niwatori>({
     defaultValues: {
       place: "庭",
       count: "2",
       unit: "羽",
+      emoji: "🐔",
       niwatori: "ニワトリ",
       whatHappened: "いる",
     }
   })
 
+  const setEmoji = useCallback((emoji: string) => setValue("emoji", emoji), [])
+
+  useEffect(() => {
+    register("emoji")
+  }, [])
+
   const submit: SubmitHandler<Niwatori> = (data, event) => {
     event.preventDefault()
     console.log(data)
-    generate()
+    // generate()
   }
 
   const generate = async () => {
@@ -55,6 +62,7 @@ const Home = () => {
       <NiwatoriEditor
         register={register}
         onSubmit={handleSubmit(submit)}
+        onEmojiClick={setEmoji}
       />
     </div>
   )
