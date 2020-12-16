@@ -61,10 +61,10 @@ const Home = () => {
     }
   }
 
-  const pageUrl = `https://niwatori-generator.dayo.app/`
+  const pageUrl = `https://niwatori.dayo.app`
   const TITLE = "庭には2羽ニワトリがいるジェネレーター"
   const DESCRIPTION = "ほんわかニワトリ画像を作成します"
-  const imageUrl = "/static/niwatori.png"
+  const imageUrl = "https://niwatori.dayo.app/static/niwatori.png"
 
   return (
     <Layout>
