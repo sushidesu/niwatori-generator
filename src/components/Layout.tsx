@@ -25,11 +25,11 @@ const Paper = styled.div`
   max-width: 600px;
   margin: .6em;
   box-shadow: 2px 3px 30px 0px rgb(206 218 230 / 75%);
-  padding: 6px;
+  padding: 16px;
 `
 
 const Header = styled.header`
-  margin: .2em .4em;
+  margin: .2em 0 .4em;
   & > a {
     color: inherit;
     text-decoration: none;
