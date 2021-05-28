@@ -16,7 +16,7 @@ const NonMemoNiwatoriEditor: React.FC<Props> = ({ loading, register, onSubmit, o
     <Form onSubmit={onSubmit}>
       <Input
         name="place"
-        label="どこに"
+        label="どこで"
         ref={register}
       />
       <Input
